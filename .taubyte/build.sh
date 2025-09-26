@@ -1,5 +1,8 @@
 #!/bin/bash
 
-go mod tidy
-go build -o /out/function.wasm .
-exit 0
+. /utils/wasm.sh
+
+build "${FILENAME}"
+ret=$?
+echo -n $ret > /out/ret-code
+exit $ret
